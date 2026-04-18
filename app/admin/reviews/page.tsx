@@ -26,7 +26,7 @@ interface Review {
   rating: number;
   description: string;
   verified: boolean;
-  createdAt: string;
+  createdAt: string | Date;
 }
 
 export default function AdminReviews() {
@@ -48,7 +48,9 @@ export default function AdminReviews() {
   const fetchReviews = async () => {
     try {
       const result = await getAdminReviews();
-      if (result.success) setReviews(result.data);
+      if (result.success && result.data) {
+        setReviews(result.data as Review[]);
+      }
     } catch (error) {
       console.error("Fetch Error:", error);
     } finally {
@@ -182,7 +184,7 @@ export default function AdminReviews() {
                       </span>
                     </div>
                     <p className="text-sm text-slate-600 leading-relaxed italic font-serif">
-                      "{review.description}"
+                      &quot;{review.description}&quot;
                     </p>
                   </div>
 

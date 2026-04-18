@@ -22,7 +22,24 @@ import {
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
-// ... [Interface remains the same]
+interface Booking {
+  id: string;
+  userId: string;
+  roomId: string;
+  checkIn: string;
+  checkOut: string;
+  status: string;
+  guests: number;
+  specialRequest: string;
+  createdAt: string;
+  user: {
+    email: string;
+  };
+  room: {
+    name: string;
+    image: string;
+  };
+}
 
 export default function AdminBookings() {
   const { data: session, status } = useSession();
@@ -74,7 +91,7 @@ export default function AdminBookings() {
     const matchesSearch = 
       booking.user.email.toLowerCase().includes(searchStr) ||
       booking.room.name.toLowerCase().includes(searchStr) ||
-      booking.specialRequest.toLowerCase().includes(searchStr);
+      (booking.specialRequest || "").toLowerCase().includes(searchStr);
     const matchesStatus = statusFilter === "all" || booking.status === statusFilter;
     return matchesSearch && matchesStatus;
   });

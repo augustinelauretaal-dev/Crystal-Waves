@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { Menu, X, Phone, MapPin, Calendar, Globe, Star } from "lucide-react";
 
 export default function LuxuryNavbar() {
@@ -58,14 +59,14 @@ export default function LuxuryNavbar() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex justify-between items-center">
           
           {/* Logo (Home Link) */}
-          <a href="/" className="flex flex-col group cursor-pointer no-underline">
+          <Link href="/" className="flex flex-col group cursor-pointer no-underline">
             <span className="text-white text-xl lg:text-2xl font-serif tracking-tight leading-none italic transition-transform duration-500 group-hover:scale-105">
               Crystal <span className="font-light not-italic text-cyan-200">Waves</span>
             </span>
             <span className="text-[8px] uppercase tracking-[0.5em] text-cyan-400/80 font-bold mt-1">
               Sanctuary & Spa
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden xl:flex items-center gap-8">
@@ -131,7 +132,7 @@ export default function LuxuryNavbar() {
 
               <div className="flex flex-col gap-5 flex-1 overflow-y-auto custom-scrollbar">
                 {/* Mobile version adds Home link explicitly */}
-                <a href="/" className="text-2xl font-serif text-white hover:text-cyan-300 transition-colors" onClick={() => setIsOpen(false)}>Home</a>
+                <Link href="/" className="text-2xl font-serif text-white hover:text-cyan-300 transition-colors" onClick={() => setIsOpen(false)}>Home</Link>
                 {navLinks.map((link, i) => (
                   <motion.a
                     initial={{ opacity: 0, x: 20 }}

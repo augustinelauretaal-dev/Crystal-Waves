@@ -7,7 +7,7 @@ interface Review {
   rating: number;
   description: string;
   verified: boolean;
-  createdAt: string;
+  createdAt: string | Date;
 }
 
 interface ReviewCardProps {
@@ -15,7 +15,7 @@ interface ReviewCardProps {
 }
 
 export default function ReviewCard({ review }: ReviewCardProps) {
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string | Date) => {
     return new Date(dateString).toLocaleDateString('en-US', { 
       year: 'numeric', 
       month: 'short',
@@ -54,7 +54,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
         {/* Content Section */}
         <div className="flex-grow">
           <blockquote className="text-slate-600 mb-8 leading-relaxed italic font-serif text-lg lg:text-xl">
-            "{review.description}"
+            &quot;{review.description}&quot;
           </blockquote>
         </div>
         

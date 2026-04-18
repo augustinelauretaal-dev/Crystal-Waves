@@ -99,7 +99,7 @@ export default function LuxuryAbout() {
             <div className="space-y-6">
               <h4 className="text-2xl font-serif text-slate-800 italic">Unforgettable Memories</h4>
               <p className="text-slate-500 leading-relaxed font-light">
-                Nestled within the lush landscapes of Nueva Ecija, Crystal Waves invites you to disconnect from the digital world and reconnect with yourself. Our architecture pays homage to the ocean's curves, offering panoramic views from every vantage point.
+                Nestled within the lush landscapes of Nueva Ecija, Crystal Waves invites you to disconnect from the digital world and reconnect with yourself. Our architecture pays homage to the ocean&apos;s curves, offering panoramic views from every vantage point.
               </p>
               <p className="text-slate-500 leading-relaxed font-light">
                 Whether you seek the thrill of water sports or the quiet contemplation of our spa gardens, our dedicated team ensures every moment is tailored to your desires.

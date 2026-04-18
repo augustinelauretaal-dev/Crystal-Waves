@@ -14,7 +14,7 @@ interface Review {
   rating: number;
   description: string;
   verified: boolean;
-  createdAt: string;
+  createdAt: string | Date;
 }
 
 export default function LuxuryReviews() {
@@ -34,7 +34,9 @@ export default function LuxuryReviews() {
   const fetchReviews = async () => {
     try {
       const result = await getReviews();
-      if (result.success) setReviews(result.data);
+      if (result.success && result.data) {
+        setReviews(result.data as Review[]);
+      }
     } catch (error) {
       console.error('Error fetching reviews:', error);
     } finally {

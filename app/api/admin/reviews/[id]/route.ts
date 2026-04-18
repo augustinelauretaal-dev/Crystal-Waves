@@ -5,9 +5,10 @@ import { authOptions } from '@/lib/auth';
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
     
     if (!session) {
@@ -18,7 +19,7 @@ export async function PATCH(
     const { verified } = body;
 
     const review = await prisma.review.update({
-      where: { id: params.id },
+      where: { id },
       data: { verified }
     });
 
@@ -34,9 +35,10 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
     
     if (!session) {
@@ -44,7 +46,7 @@ export async function DELETE(
     }
 
     await prisma.review.delete({
-      where: { id: params.id }
+      where: { id }
     });
 
     return NextResponse.json({ success: true });

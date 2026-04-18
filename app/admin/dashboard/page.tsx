@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   CalendarDays,
   DoorOpen,
@@ -158,9 +159,9 @@ export default function AdminDashboard() {
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold text-slate-900">Recent Inquiries</h2>
-              <a href="/admin/bookings" className="text-xs font-bold text-cyan-600 uppercase tracking-wider hover:text-cyan-800 transition-colors">
+              <Link href="/admin/bookings" className="text-xs font-bold text-cyan-600 uppercase tracking-wider hover:text-cyan-800 transition-colors">
                 View All →
-              </a>
+              </Link>
             </div>
             
             <div className="bg-white rounded-sm border border-slate-200 shadow-sm overflow-hidden">
@@ -216,7 +217,7 @@ export default function AdminDashboard() {
           <div className="space-y-6">
             <h2 className="text-lg font-bold text-slate-900">Workspace Tasks</h2>
             <div className="bg-white rounded-sm border border-slate-200 shadow-sm p-2">
-              <a
+              <Link
                 href="/admin/bookings"
                 className="flex items-center p-4 rounded-sm hover:bg-slate-50 transition-colors group"
               >
@@ -227,11 +228,11 @@ export default function AdminDashboard() {
                   <p className="text-sm font-bold text-slate-900">Manage Ledger</p>
                   <p className="text-xs text-slate-500">View all reservations</p>
                 </div>
-              </a>
+              </Link>
               
               <div className="h-px bg-slate-100 mx-4"></div>
               
-              <a
+              <Link
                 href="/admin/rooms"
                 className="flex items-center p-4 rounded-sm hover:bg-slate-50 transition-colors group"
               >
@@ -242,11 +243,11 @@ export default function AdminDashboard() {
                   <p className="text-sm font-bold text-slate-900">Room Inventory</p>
                   <p className="text-xs text-slate-500">Edit suites & pricing</p>
                 </div>
-              </a>
+              </Link>
               
               <div className="h-px bg-slate-100 mx-4"></div>
               
-              <a
+              <Link
                 href="/admin/reviews"
                 className="flex items-center p-4 rounded-sm hover:bg-slate-50 transition-colors group"
               >
@@ -257,7 +258,7 @@ export default function AdminDashboard() {
                   <p className="text-sm font-bold text-slate-900">Review Management</p>
                   <p className="text-xs text-slate-500">Moderate guest feedback</p>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

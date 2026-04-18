@@ -2,11 +2,12 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { ArrowLeft, LogOut, Save, Loader2 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
-export default function EditRoom({ params }: { params: { id: string } }) {
+export default function EditRoom({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
   const { data: session, status } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ export default function EditRoom({ params }: { params: { id: string } }) {
         // Ideally, your API should support /api/admin/rooms/[id]
         const response = await fetch(`/api/admin/rooms`);
         const rooms = await response.json();
-        const room = rooms.find((r: any) => r.id === params.id);
+        const room = rooms.find((r: any) => r.id === resolvedParams.id);
         if (room) {
           setFormData({
             name: room.name,
@@ -47,14 +48,14 @@ export default function EditRoom({ params }: { params: { id: string } }) {
     };
 
     if (session) fetchRoom();
-  }, [params.id, session]);
+  }, [resolvedParams.id, session]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch(`/api/admin/rooms/${params.id}`, {
+      const response = await fetch(`/api/admin/rooms/${resolvedParams.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
