@@ -45,3 +45,12 @@ model Booking {
   @@index([roomId])
   @@index([status])
 }
+
+model Review {
+  id          String   @id @default(cuid())
+  name        String
+  rating      Int
+  description String
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}

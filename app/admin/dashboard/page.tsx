@@ -10,7 +10,8 @@ import {
   Check,
   X,
   Clock,
-  LayoutDashboard
+  LayoutDashboard,
+  MessageSquare
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
@@ -240,6 +241,21 @@ export default function AdminDashboard() {
                 <div className="flex-1">
                   <p className="text-sm font-bold text-slate-900">Room Inventory</p>
                   <p className="text-xs text-slate-500">Edit suites & pricing</p>
+                </div>
+              </a>
+              
+              <div className="h-px bg-slate-100 mx-4"></div>
+              
+              <a
+                href="/admin/reviews"
+                className="flex items-center p-4 rounded-sm hover:bg-slate-50 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-cyan-50 group-hover:text-cyan-600 transition-colors mr-4 text-slate-500">
+                  <MessageSquare className="w-5 h-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-slate-900">Review Management</p>
+                  <p className="text-xs text-slate-500">Moderate guest feedback</p>
                 </div>
               </a>
             </div>
